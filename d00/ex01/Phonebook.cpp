@@ -23,20 +23,25 @@ void	Phonebook::search()
 	std::string s;
 	std::stringstream ss;
 
+	if (count == 0)
+	{
+		std::cout << "Phonebook is empty" << std::endl;
+		return ;
+	}
 	for (int i = 0; i < count; i++)
 	{
-		std::cout << std::setw(10) << i << "|";
+		std::cout << std::setw(10) << i + 1 << "|";
 		this->contacts[i].print_short_contact();
 	}
 	std::cout << "Enter index of contact: ";
 	std::cin >> s;
 	ss << s;
 	ss >> n;
-	if (n < 0 || n >= count || (n == 0 && s.compare("0")))
+	if (n < 1 || n > count)
 	{
 		std::cout << "Contact with this index doesn't exist" << std::endl;
 		return ;
 	}
 	else
-		contacts[n].print_full_contact();
+		contacts[n - 1].print_full_contact();
 }
