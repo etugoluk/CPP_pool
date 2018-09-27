@@ -1,12 +1,12 @@
 #include "Brain.hpp"
 #include "Human.hpp"
 
-Brain		Human::getBrain()
+Brain const &Human::getBrain() const
 {
 	return (this->_brain);
 }
 
-std::string Human::identify()
+std::string Human::identify() const
 {
 	return (this->_brain.identify());
 }

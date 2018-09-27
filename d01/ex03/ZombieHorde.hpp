@@ -1,7 +1,6 @@
 #ifndef ZOMBIEHORDE_HPP
 # define ZOMBIEHORDE_HPP
 
-#include <iostream>
 #include "Zombie.hpp"
 
 class ZombieHorde
@@ -9,7 +8,7 @@ class ZombieHorde
 	Zombie *horde;
 	int		n;
 public:
-	ZombieHorde(int n);
+	ZombieHorde(int N);
 	~ZombieHorde();
 	void announce();
 };

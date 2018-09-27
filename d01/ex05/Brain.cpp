@@ -1,10 +1,8 @@
 #include "Brain.hpp"
 
-std::string Brain::identify()
+std::string Brain::identify() const
 {
-	// const void *address = static_cast<const void*>(this);
 	std::stringstream ss;
-	ss << this;  
-	// std::string name = ss.str(); 
+	ss << this;
 	return (ss.str());
 }

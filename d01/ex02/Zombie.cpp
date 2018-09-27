@@ -1,15 +1,13 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie(std::string type, std::string name)
+Zombie::Zombie(std::string type, std::string name) : type(type), name(name)
 {
-	this->type = type;
-	this->name = name;
-	std::cout << "Zombie create with name: " <<this->name << "and type: " << this->type << std::endl;
+	std::cout << "Zombie is created with name: " <<this->name << " and type: " << this->type << std::endl;
 }
 
 Zombie::~Zombie()
 {
-	std::cout << "Zombie destroyed with name: " <<this->name << "and type: " << this->type << std::endl;
+	std::cout << "Zombie is destroyed with name: " <<this->name << " and type: " << this->type << std::endl;
 }
 
 void Zombie::announce()
