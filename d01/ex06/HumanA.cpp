@@ -1,13 +1,8 @@
 #include "HumanA.hpp"
 
-// HumanA::~HumanA()
-// {
-// 	delete w_a;
-// }
-
-void HumanA::setWeapon(Weapon &w)
+HumanA::HumanA(std::string name, Weapon &w_a): w_a(&w_a), name(name)
 {
-	this->w_a = &w;
+	
 }
 
 void HumanA::attack()

@@ -8,9 +8,7 @@ class HumanB
 	Weapon *w_b;
 	std::string name;
 public:
-	// HumanB(std::string name):name(name) {}
-	HumanB(std::string name, Weapon *w_b = new Weapon("default")): w_b(w_b), name(name){}
-	// ~HumanB();
+	HumanB(std::string name);
 	void setWeapon(Weapon &w);
 	void attack();
 };

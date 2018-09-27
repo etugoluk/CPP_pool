@@ -1,9 +1,9 @@
 #include "HumanB.hpp"
 
-// HumanB::~HumanB()
-// {
-// 	delete w_b;
-// }
+HumanB::HumanB(std::string name): name(name)
+{
+
+}
 
 void HumanB::setWeapon(Weapon &w)
 {
