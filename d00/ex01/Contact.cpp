@@ -4,27 +4,27 @@
 void	Contact::set_contact()
 {
 	std::cout << "First name: ";
-	std::cin >> firstname;
+	std::getline(std::cin, firstname);
 	std::cout << "Last name: ";
-	std::cin >> lastname;
+	std::getline(std::cin, lastname);
 	std::cout << "Nick name: ";
-	std::cin >> nickname;
+	std::getline(std::cin, nickname);
 	std::cout << "Login: ";
-	std::cin >> login;
+	std::getline(std::cin, login);
 	std::cout << "Postal address: ";
-	std::cin >> postal_address;
+	std::getline(std::cin, postal_address);
 	std::cout << "Email address: ";
-	std::cin >> email_address;
+	std::getline(std::cin, email_address);
 	std::cout << "Phone number: ";
-	std::cin >> phone_number;
+	std::getline(std::cin, phone_number);
 	std::cout << "birthday_date: ";
-	std::cin >> birthday_date;
+	std::getline(std::cin, birthday_date);
 	std::cout << "favorite_meal: ";
-	std::cin >> favorite_meal;
+	std::getline(std::cin, favorite_meal);
 	std::cout << "underwear_color: ";
-	std::cin >> underwear_color;
+	std::getline(std::cin, underwear_color);
 	std::cout << "darkest_secret: ";
-	std::cin >> darkest_secret;
+	std::getline(std::cin, darkest_secret);
 }
 
 void	Contact::print_full_contact()

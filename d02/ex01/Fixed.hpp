@@ -4,8 +4,7 @@
 #include <iostream>
 #include <cmath>
 
-class Fixed
-{
+class Fixed{
 public:
 	Fixed();
 	Fixed(const int i);
@@ -13,12 +12,12 @@ public:
 	Fixed(Fixed const &f);
 	~Fixed();
 
-	Fixed & operator = (Fixed const &f);
+	Fixed& operator=(Fixed const &f);
 	
-	int getRawBits( void ) const;
-	void setRawBits( int const raw );
-	float toFloat( void ) const;
-	int toInt( void ) const;
+	int getRawBits(void) const;
+	void setRawBits(int const raw);
+	float toFloat(void) const;
+	int toInt(void) const;
 
 private:
 	int fixed_point;

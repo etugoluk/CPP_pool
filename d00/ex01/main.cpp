@@ -9,7 +9,7 @@ int main()
 	while (1)
 	{
 		std::cout << "Write your command (ADD | SEARCH | EXIT): ";
-		std::cin >> s;
+		std::getline(std::cin, s);
 		if (!s.compare("ADD"))
 			p.add();
 		else if (!s.compare("SEARCH"))
