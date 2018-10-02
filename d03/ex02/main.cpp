@@ -3,7 +3,11 @@
 
 int main()
 {
-	ScavTrap st("Zhenia");
+	FragTrap ft("Zhenia");
+	ft.vaulthunter_dot_exe("Nastya");
+
+	ScavTrap st("Nastya");
 	st.challengeNewcomer();
+	
 	return (0);
 }
