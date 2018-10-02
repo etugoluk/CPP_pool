@@ -1,15 +1,3 @@
-// ************************************************************************** //
-//                                                                            //
-//                                                        :::      ::::::::   //
-//   Account.class.cpp                                  :+:      :+:    :+:   //
-//                                                    +:+ +:+         +:+     //
-//   By: etugoluk <etugoluk@student.unit.ua>        +#+  +:+       +#+        //
-//                                                +#+#+#+#+#+   +#+           //
-//   Created: 2018/10/02 17:28:57 by etugoluk          #+#    #+#             //
-//   Updated: 2018/10/02 17:28:58 by etugoluk         ###   ########.fr       //
-//                                                                            //
-// ************************************************************************** //
-
 #include "Account.class.hpp"
 #include <iostream>
 #include <ctime>
@@ -25,6 +13,7 @@ Account::Account()
 	_amount = 0;
 	_nbDeposits = 0;
 	_nbWithdrawals = 0;
+	_nCheckAmount = 0;
 	_displayTimestamp();
 	std::cout << " index:" << _accountIndex << ";" << "amount:" << _amount << ";" << "created" << std::endl;
 }
@@ -36,6 +25,7 @@ Account::Account(int initial_deposit)
 	_totalAmount += _amount;
 	_nbDeposits = 0;
 	_nbWithdrawals = 0;
+	_nCheckAmount = 0;
 	_displayTimestamp();
 	std::cout << " index:" << _accountIndex << ";" << "amount:" << _amount << ";" << "created" << std::endl;
 }
@@ -117,6 +107,7 @@ bool	Account::makeWithdrawal( int withdrawal )
 
 int		Account::checkAmount( void ) const
 {
+	_nCheckAmount++;
 	return (_amount);
 }
 
