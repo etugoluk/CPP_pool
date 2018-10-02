@@ -40,15 +40,15 @@ public:
 	void SenselessSacrifice(std::string const & target);
 
 private:
-	unsigned int hit_points;
-	unsigned int max_hit_points;
-	unsigned int energy_points;
-	unsigned int max_energy_points;
-	unsigned int level;
+	int hit_points;
+	int max_hit_points;
+	int energy_points;
+	int max_energy_points;
+	int level;
 	std::string name;
-	unsigned int melee_attack_damage;
-	unsigned int ranged_attack_damage;
-	unsigned int armor_damage_reduction;
+	int melee_attack_damage;
+	int ranged_attack_damage;
+	int armor_damage_reduction;
 };
 
 #endif

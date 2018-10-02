@@ -1,32 +1,27 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap() : 
-	hit_points(100),
-	max_hit_points(100), 
-	energy_points(100),
-	max_energy_points(100),
-	level(1), 
-	name("Incognito"),
-	melee_attack_damage(30),
-	ranged_attack_damage(20),
-	armor_damage_reduction(5)
-{
-	srand(time(0));
+FragTrap::FragTrap() : ClapTrap() {
+	this->hit_points = 100;
+	this->max_hit_points = 100;
+	this->energy_points = 100;
+	this->max_energy_points = 100;
+	this->level = 1;
+	this->name = "Incognito";
+	this->melee_attack_damage = 30;
+	this->ranged_attack_damage = 20;
+	this->armor_damage_reduction = 5;
 	std::cout << "♥♥♥ Unknown FR4G-TP robot is borned ♥♥♥" << std::endl;
 }
 
-FragTrap::FragTrap(std::string name) :
-	hit_points(100),
-	max_hit_points(100), 
-	energy_points(100),
-	max_energy_points(100),
-	level(1), 
-	name(name),
-	melee_attack_damage(30),
-	ranged_attack_damage(20),
-	armor_damage_reduction(5)
-{
-	srand(time(0));
+FragTrap::FragTrap(std::string name) : ClapTrap(name) {
+	this->hit_points = 100;
+	this->max_hit_points = 100;
+	this->energy_points = 100;
+	this->max_energy_points = 100;
+	this->level = 1;
+	this->melee_attack_damage = 30;
+	this->ranged_attack_damage = 20;
+	this->armor_damage_reduction = 5;
 	std::cout << "♥♥♥ FR4G-TP robot " << name << " is borned ♥♥♥" << std::endl;
 }
 
@@ -53,69 +48,6 @@ FragTrap & FragTrap::operator =(FragTrap const & ft) {
 	this->armor_damage_reduction = ft.get_armor_damage_reduction();
 
 	return (*this);
-}
-
-int FragTrap::get_hit_points() const {
-	return (this->hit_points);
-}
-
-int FragTrap::get_max_hit_points() const {
-	return (this->max_hit_points);
-}
-
-int FragTrap::get_energy_points() const {
-	return (this->energy_points);
-}
-
-int FragTrap::get_max_energy_points() const {
-	return (this->max_energy_points);
-}
-
-int FragTrap::get_level() const {
-	return (this->level);
-}
-
-std::string FragTrap::get_name() const {
-	return (this->name);
-}
-
-int FragTrap::get_melee_attack_damage() const {
-	return (this->melee_attack_damage);
-}
-
-int FragTrap::get_ranged_attack_damage() const {
-	return (this->ranged_attack_damage);
-}
-
-int FragTrap::get_armor_damage_reduction() const {
-	return (this->armor_damage_reduction);
-}
-
-void FragTrap::rangedAttack(std::string const & target) {
-	std::cout << "FR4G-TP robot named " << this->name << " attacks " << target << 
-	" at range, causing " << this->ranged_attack_damage << "points of damage !" << std::endl;
-
-}
-
-void FragTrap::meleeAttack(std::string const & target) {
-	std::cout << "FR4G-TP robot named " << this->name << " attacks " << target << 
-	" at melee, causing " << this->melee_attack_damage << "points of damage !" << std::endl;
-}
-
-void FragTrap::takeDamage(unsigned int amount) {
-	if (this->hit_points < amount)
-		this->hit_points = 0;
-	else
-		this->hit_points -= amount;
-	std::cout << "Now, FR4G-TP robot " << this->name << " has " << this->hit_points << " hit points!" << std::endl;
-}
-
-void FragTrap::beRepaired(unsigned int amount) {
-	if (this->hit_points + amount > this->max_hit_points)
-		this->hit_points = this->max_hit_points;
-	else
-		this->hit_points += amount;
-	std::cout << "Now, FR4G-TP robot " << this->name << " has " << this->hit_points << " hit points!" << std::endl;
 }
 
 void FragTrap::BlightBot(std::string const &target)
