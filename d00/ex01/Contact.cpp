@@ -1,30 +1,52 @@
+// ************************************************************************** //
+//                                                                            //
+//                                                        :::      ::::::::   //
+//   Contact.cpp                                        :+:      :+:    :+:   //
+//                                                    +:+ +:+         +:+     //
+//   By: etugoluk <etugoluk@student.unit.ua>        +#+  +:+       +#+        //
+//                                                +#+#+#+#+#+   +#+           //
+//   Created: 2018/10/02 17:27:26 by etugoluk          #+#    #+#             //
+//   Updated: 2018/10/02 17:27:27 by etugoluk         ###   ########.fr       //
+//                                                                            //
+// ************************************************************************** //
 
 #include "Contact.hpp"
 
 void	Contact::set_contact()
 {
 	std::cout << "First name: ";
-	std::getline(std::cin, firstname);
+	if (!std::getline(std::cin, firstname))
+		exit(0);
 	std::cout << "Last name: ";
-	std::getline(std::cin, lastname);
+	if (!std::getline(std::cin, lastname))
+		exit(0);
 	std::cout << "Nick name: ";
-	std::getline(std::cin, nickname);
+	if (!std::getline(std::cin, nickname))
+		exit(0);
 	std::cout << "Login: ";
-	std::getline(std::cin, login);
+	if (!std::getline(std::cin, login))
+		exit(0);
 	std::cout << "Postal address: ";
-	std::getline(std::cin, postal_address);
+	if (!std::getline(std::cin, postal_address))
+		exit(0);
 	std::cout << "Email address: ";
-	std::getline(std::cin, email_address);
+	if (!std::getline(std::cin, email_address))
+		exit(0);
 	std::cout << "Phone number: ";
-	std::getline(std::cin, phone_number);
+	if (!std::getline(std::cin, phone_number))
+		exit(0);
 	std::cout << "birthday_date: ";
-	std::getline(std::cin, birthday_date);
+	if (!std::getline(std::cin, birthday_date))
+		exit(0);
 	std::cout << "favorite_meal: ";
-	std::getline(std::cin, favorite_meal);
+	if (!std::getline(std::cin, favorite_meal))
+		exit(0);
 	std::cout << "underwear_color: ";
-	std::getline(std::cin, underwear_color);
+	if (!std::getline(std::cin, underwear_color))
+		exit(0);
 	std::cout << "darkest_secret: ";
-	std::getline(std::cin, darkest_secret);
+	if (!std::getline(std::cin, darkest_secret))
+		exit(0);
 }
 
 void	Contact::print_full_contact()
