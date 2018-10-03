@@ -1,4 +1,17 @@
+// ************************************************************************** //
+//                                                                            //
+//                                                        :::      ::::::::   //
+//   Logger.cpp                                         :+:      :+:    :+:   //
+//                                                    +:+ +:+         +:+     //
+//   By: etugoluk <etugoluk@student.unit.ua>        +#+  +:+       +#+        //
+//                                                +#+#+#+#+#+   +#+           //
+//   Created: 2018/10/03 15:32:55 by etugoluk          #+#    #+#             //
+//   Updated: 2018/10/03 15:32:56 by etugoluk         ###   ########.fr       //
+//                                                                            //
+// ************************************************************************** //
+
 #include "Logger.hpp"
+#include <unistd.h>
 
 void Logger::setFilename(std::string const &name)
 {
@@ -12,8 +25,15 @@ void Logger::logToConsole(std::string const &str)
 
 void Logger::logToFile(std::string const &str)
 {
-	std::ofstream os(this->filename);
-	os << str;
+	std::ofstream os;
+	os.open(this->filename, std::fstream::app);
+	if (access(this->filename.c_str(), W_OK) == -1)
+	{
+		std::cout << this->filename << ": Permission denied" << std::endl;
+		os.close();
+		return ;
+	}
+	os << str + "\n";
 	os.close();
 }
 
