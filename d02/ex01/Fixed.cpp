@@ -1,3 +1,15 @@
+// ************************************************************************** //
+//                                                                            //
+//                                                        :::      ::::::::   //
+//   Fixed.cpp                                          :+:      :+:    :+:   //
+//                                                    +:+ +:+         +:+     //
+//   By: etugoluk <etugoluk@student.unit.ua>        +#+  +:+       +#+        //
+//                                                +#+#+#+#+#+   +#+           //
+//   Created: 2018/10/04 18:42:15 by etugoluk          #+#    #+#             //
+//   Updated: 2018/10/04 18:42:16 by etugoluk         ###   ########.fr       //
+//                                                                            //
+// ************************************************************************** //
+
 #include "Fixed.hpp"
 
 const int Fixed::fractional_bits = 8;
@@ -29,7 +41,7 @@ Fixed::~Fixed() {
 Fixed & Fixed::operator = (Fixed const &f) {
 	std::cout << "Assignation operator called" << std::endl;
 	if (this != &f) {
-		fixed_point = f.fixed_point;
+		fixed_point = f.getRawBits();
 	}
 	return *this;
 }
@@ -43,7 +55,7 @@ void Fixed::setRawBits( int const raw ) {
 }
 
 float Fixed::toFloat( void ) const {
-	return fixed_point / (float)(1 << fractional_bits);
+	return (float)fixed_point / (1 << fractional_bits);
 }
 
 int Fixed::toInt( void ) const {

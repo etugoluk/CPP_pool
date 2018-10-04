@@ -1,3 +1,15 @@
+// ************************************************************************** //
+//                                                                            //
+//                                                        :::      ::::::::   //
+//   Fixed.cpp                                          :+:      :+:    :+:   //
+//                                                    +:+ +:+         +:+     //
+//   By: etugoluk <etugoluk@student.unit.ua>        +#+  +:+       +#+        //
+//                                                +#+#+#+#+#+   +#+           //
+//   Created: 2018/10/04 18:42:15 by etugoluk          #+#    #+#             //
+//   Updated: 2018/10/04 18:42:16 by etugoluk         ###   ########.fr       //
+//                                                                            //
+// ************************************************************************** //
+
 #include "Fixed.hpp"
 
 const int Fixed::fractional_bits = 8;
@@ -11,7 +23,6 @@ Fixed::Fixed(const int i) {
 }
 
 Fixed::Fixed(const float i) {
-	// fixed_point = roundf(i / pow(2, -8));
 	fixed_point = roundf(i * (1 << fractional_bits));
 }
 
@@ -23,7 +34,7 @@ Fixed::~Fixed() {}
 
 Fixed & Fixed::operator = (Fixed const &f) {
 	if (this != &f) {
-		fixed_point = f.fixed_point;
+		fixed_point = f.getRawBits();
 	}
 	return *this;
 }
@@ -37,13 +48,11 @@ void Fixed::setRawBits( int const raw ) {
 }
 
 float Fixed::toFloat( void ) const {
-	return fixed_point / (float)(1 << fractional_bits);
-	// return fixed_point * pow(2, fractional_bits * -1);
+	return (float)fixed_point / (1 << fractional_bits);
 }
 
 int Fixed::toInt( void ) const {
 	return fixed_point / (1 << fractional_bits);
-	// return roundf(fixed_point * pow(2, fractional_bits * -1));
 }
 
 std::ostream& operator << (std::ostream &os, Fixed const &f) {
@@ -120,6 +129,18 @@ Fixed const & Fixed::min(Fixed const &f1, Fixed const &f2) {
 }
 
 Fixed const & Fixed::max(Fixed const &f1, Fixed const &f2) {
+	if (f1.getRawBits() > f2.getRawBits())
+		return f1;
+	return f2;
+}
+
+Fixed const & Fixed::min(Fixed &f1, Fixed &f2) {
+	if (f1.getRawBits() < f2.getRawBits())
+		return f1;
+	return f2;
+}
+
+Fixed const & Fixed::max(Fixed &f1, Fixed &f2) {
 	if (f1.getRawBits() > f2.getRawBits())
 		return f1;
 	return f2;
