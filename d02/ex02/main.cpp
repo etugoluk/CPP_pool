@@ -21,9 +21,26 @@ int main( void )
 	std::cout << ++a << std::endl;
 	std::cout << a << std::endl;
 	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
+	std::cout << a << std::endl;std::cout << b << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl;
+
+	std::cout << "Additional tests:" << std::endl;
+	 a = 2;
+	 Fixed c(0);
+	 std::cout << "a = " << a << std::endl;
+	 std::cout << "c = " << c << std::endl;
+	 std::cout << "a + c = " << a + c << std::endl;
+	 std::cout << "a - c = " << a - c << std::endl;
+	 std::cout << "c - a = " << c - a << std::endl;
+	 std::cout << "a * c = " << a * c << std::endl;
+	 std::cout << "a / c = " << a / c << std::endl;
+	 
+	 (a > c) ? std::cout << "a > c " << std::endl : std::cout << "a < c " << std::endl;
+	 (a >= c) ? std::cout << "a >= c " << std::endl : std::cout << "a =< c " << std::endl;
+	 (a < c) ? std::cout << "a < c " << std::endl : std::cout << "a > c " << std::endl;
+	 (a <= c) ? std::cout << "a <= c " << std::endl : std::cout << "a >= c " << std::endl;
+	 (a == c) ? std::cout << "a == c " << std::endl : std::cout << "a != c " << std::endl;
+	 (a != c) ? std::cout << "a != c " << std::endl : std::cout << "a != c " << std::endl;
 
 	return (0);
 }

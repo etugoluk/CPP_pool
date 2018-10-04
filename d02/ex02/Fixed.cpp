@@ -97,6 +97,10 @@ Fixed Fixed::operator * (Fixed const &f) {
 }
 
 Fixed Fixed::operator / (Fixed const &f) {
+	if (f.getRawBits() == 0) {
+		std::cout << "Division by zero. Empty constructor will be returned." << std::endl;
+		return (Fixed());
+	}
 	return (Fixed(this->toFloat() / f.toFloat()));
 }
 
