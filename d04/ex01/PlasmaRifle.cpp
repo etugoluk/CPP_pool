@@ -1,24 +1,30 @@
 
 #include "PlasmaRifle.hpp"
 
-PlasmaRifle(std::string const & name = "Plasma Rifle", int apcost = 5, int damage = 21) {
+PlasmaRifle::PlasmaRifle() {
+	name = "Plasma Rifle";
+	apcost = 5;
+	damage = 21;
 }
 
-~PlasmaRifle() {
+PlasmaRifle::PlasmaRifle(std::string const & name = "Plasma Rifle", int apcost = 5, int damage = 21) : AWeapon(name, apcost, damage) {}
+
+PlasmaRifle::PlasmaRifle(PlasmaRifle const & pr) {
+	*this = pr;
 }
 
-std::string getName() const {
-	return (name);
+PlasmaRifle::~PlasmaRifle() {}
+
+PlasmaRifle & PlasmaRifle::operator = (PlasmaRifle const & pr) {
+	if (this != &pr)
+	{
+		this->name = pr.getName();
+		this->apcost = pr.getAPCost();
+		this->damage = pr.getDamage();
+	}
+	return *this;
 }
 
-int getAPCost() const {
-	return (APcost);
-}
-
-int getDamage() const {
-	return (Damage);
-}
-
-void attack() {
+void PlasmaRifle::attack() {
 	std::cout << "* piouuu piouuu piouuu *" << std::endl;
 }

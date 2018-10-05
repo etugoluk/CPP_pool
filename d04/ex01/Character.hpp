@@ -1,6 +1,8 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
+#include "AWeapon.hpp"
+
 class Character {
 
 	std::string name;
@@ -10,6 +12,7 @@ class Character {
 public:
 	Character();
 	Character(std::string const & name);
+	Character(std::string const & name, int ap, Aweapon* aw);
 	Character(Character const & ch);
 	~Character();
 
@@ -18,7 +21,9 @@ public:
 	void recoverAP();
 	void equip(AWeapon* aw);
 	void attack(Enemy* e);
-	std::string virtual getName() const;
+	std::string getName() const;
+	int			getAp () const;
+	AWeapon*	getAweapon() const;
  };
 
 std::ostream & operator <<(std::ostream &os, Character const &ch);

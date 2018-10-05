@@ -1,4 +1,7 @@
+#include "PlasmaRifle.cpp"
+#include "PowerFist.cpp"
 #include "Enemy.cpp"
+#include "Character.cpp"
 
 int main() {
 	

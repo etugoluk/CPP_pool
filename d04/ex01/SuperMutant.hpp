@@ -1,7 +1,9 @@
 #ifndef SUPERMUTANT_HPP
 #define SUPERMUTANT_HPP
 
-class SuperMutant : public Enemy{
+#include "Enemy.hpp"
+
+class SuperMutant : public Enemy {
 public:
 	SuperMutant();
 	SuperMutant(int hp, std::string const & type);
@@ -10,9 +12,7 @@ public:
 
 	SuperMutant & operator = (SuperMutant const & sm);
 
-	// std::string virtual getType() const;
-	// int getHP() const;
-	// virtual void takeDamage(int);
+	void takeDamage(int n);
  };
 
 

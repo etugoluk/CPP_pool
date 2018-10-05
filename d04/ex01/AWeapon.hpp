@@ -4,10 +4,11 @@
 #include <iostream>
 
 class AWeapon {
-private:
+
+protected:
 	std::string name;
-	int			Damage;
-	int			APCost;
+	int			damage;
+	int			apCost;
 
 public:
 	AWeapon();

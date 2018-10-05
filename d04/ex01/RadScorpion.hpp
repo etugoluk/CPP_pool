@@ -10,9 +10,6 @@ public:
 
 	RadScorpion & operator = (RadScorpion const & rs);
 
-	// std::string virtual getType() const;
-	// int getHP() const;
-	// virtual void takeDamage(int);
  };
 
 

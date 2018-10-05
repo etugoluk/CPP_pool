@@ -13,9 +13,6 @@ public:
 
 	PlasmaRifle & operator = (PlasmaRifle const & pr);
 
-	std::string getName() const;
-	int getAPCost() const;
-	int getDamage() const;
 	void attack();
 };
 
