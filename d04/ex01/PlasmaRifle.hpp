@@ -7,13 +7,13 @@ class PlasmaRifle : public AWeapon {
 
 public:
 	PlasmaRifle();
-	PlasmaRifle(std::string const & name, int apcost, int damage);
+	PlasmaRifle(std::string const & name, int apCost, int damage);
 	PlasmaRifle(PlasmaRifle const & pr);
 	~PlasmaRifle();
 
 	PlasmaRifle & operator = (PlasmaRifle const & pr);
 
-	void attack();
+	virtual void attack() const;
 };
 
 #endif

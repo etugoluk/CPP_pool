@@ -1,6 +1,8 @@
 #ifndef ENEMY_HPP
 #define ENEMY_HPP
 
+#include <iostream>
+
 class Enemy {
 protected:
 	int hp;
@@ -15,6 +17,7 @@ public:
 
 	std::string getType() const;
 	int getHP() const;
+	void setHP(int hp);
 
 	virtual void takeDamage(int n);
  };

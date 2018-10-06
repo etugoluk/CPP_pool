@@ -5,6 +5,7 @@
 
 class TacticalMarine : public ISpaceMarine
 {
+	int add;
 public:
 	TacticalMarine();
 	TacticalMarine(TacticalMarine const &tm);
@@ -12,10 +13,11 @@ public:
 
 	TacticalMarine & operator = (TacticalMarine const &tm);
 
-	TacticalMarine &	clone();
-	void				battleCry();
-	void				rangedAttack();
-	void				meleeAttack();
+	int							getAdd() const;
+	virtual ISpaceMarine*		clone() const;
+	virtual void				battleCry() const;
+	virtual void				rangedAttack() const;
+	virtual void				meleeAttack() const;
 };
 
 #endif

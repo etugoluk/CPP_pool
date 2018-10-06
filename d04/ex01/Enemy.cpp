@@ -16,12 +16,18 @@ Enemy & Enemy::operator=(Enemy const & e) {
 	return *this;
 }
 
+Enemy::~Enemy() {}
+
 std::string Enemy::getType() const {
 	return type;
 }
 
 int Enemy::getHP() const {
 	return hp;
+}
+
+void Enemy::setHP(int hp) {
+	this->hp = hp;
 }
 
 void Enemy::takeDamage(int n) {

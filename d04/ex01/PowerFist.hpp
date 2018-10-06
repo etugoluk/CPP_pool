@@ -7,13 +7,13 @@ class PowerFist : public AWeapon {
 
 public:
 	PowerFist();
-	PowerFist(std::string const & name, int apcost, int damage);
-	PowerFist(PowerFirst const & pf);
+	PowerFist(std::string const & name, int apCost, int damage);
+	PowerFist(PowerFist const & pf);
 	~PowerFist();
 
 	PowerFist & operator = (PowerFist const & pf);
 
-	void attack();
+	virtual void attack() const;
 };
 
 #endif

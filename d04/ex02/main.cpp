@@ -12,6 +12,7 @@ int main()
 	vlc->push(jim);
 	for (int i = 0; i < vlc->getCount(); ++i)
 	{
+		// std::cout << "check" << std::endl;
 		ISpaceMarine* cur = vlc->getUnit(i);
 		cur->battleCry();
 		cur->rangedAttack();

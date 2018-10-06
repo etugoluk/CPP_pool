@@ -1,11 +1,12 @@
-#include "PlasmaRifle.cpp"
-#include "PowerFist.cpp"
-#include "Enemy.cpp"
-#include "Character.cpp"
+#include "PlasmaRifle.hpp"
+#include "PowerFist.hpp"
+#include "Enemy.hpp"
+#include "RadScorpion.hpp"
+#include "Character.hpp"
 
 int main() {
 	
-	Character* zaz = new Character(``zaz'');
+	Character* zaz = new Character("zaz");
 
 	std::cout << *zaz;
 

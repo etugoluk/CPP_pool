@@ -2,7 +2,7 @@
 
 AWeapon::AWeapon() {}
 
-AWeapon::AWeapon(std::string const & name, int apcost, int damage) : name(name), apcost(apcost), damage(damage) {}
+AWeapon::AWeapon(std::string const & name, int apCost, int damage) : name(name), damage(damage), apCost(apCost) {}
 
 AWeapon::AWeapon(AWeapon const & aw) {
 	*this = aw;
@@ -14,18 +14,18 @@ AWeapon & AWeapon::operator = (AWeapon const & aw) {
 	if (this != &aw)
 	{
 		this->name = aw.getName();
-		this->apcost = aw.getAPCost();
+		this->apCost = aw.getAPCost();
 		this->damage = aw.getDamage();
 	}
 	return *this;
 }
 
-std::string virtual AWeapon::getName() const {
+std::string AWeapon::getName() const {
 	return name;
 }
 
 int AWeapon::getAPCost() const {
-	return apcost;
+	return apCost;
 }
 
 int AWeapon::getDamage() const {

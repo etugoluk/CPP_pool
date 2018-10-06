@@ -1,12 +1,12 @@
 #include "RadScorpion.hpp"
 
-RadScorpion::RadScorpion() {
+RadScorpion::RadScorpion() : Enemy() {
 	hp = 80;
 	type = "RadScorpion";
 	std::cout << "* click click click *" << std::endl;
 }
 
-RadScorpion::RadScorpion(int hp = 80, std::string const & type = "RadScorpion") : hp(hp), type(type) {
+RadScorpion::RadScorpion(int hp, std::string const & type = "RadScorpion") : Enemy(hp, type) {
 	std::cout << "* click click click *" << std::endl;
 }
 

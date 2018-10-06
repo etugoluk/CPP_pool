@@ -5,6 +5,7 @@
 
 class AssaultTerminator : public ISpaceMarine
 {
+	int add;
 public:
 	AssaultTerminator();
 	AssaultTerminator(AssaultTerminator const &at);
@@ -12,9 +13,11 @@ public:
 
 	AssaultTerminator & operator = (AssaultTerminator const &at);
 
-	void				battleCry();
-	void				rangedAttack();
-	void				meleeAttack();
+	int							getAdd() const;
+	virtual void				battleCry() const;
+	virtual void				rangedAttack() const;
+	virtual void				meleeAttack() const;
+	virtual ISpaceMarine 		*clone( void ) const;
 };
 
 #endif

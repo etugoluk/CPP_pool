@@ -1,6 +1,7 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
+#include "Enemy.hpp"
 #include "AWeapon.hpp"
 
 class Character {
@@ -12,7 +13,7 @@ class Character {
 public:
 	Character();
 	Character(std::string const & name);
-	Character(std::string const & name, int ap, Aweapon* aw);
+	Character(std::string const & name, int ap, AWeapon* aw);
 	Character(Character const & ch);
 	~Character();
 

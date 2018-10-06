@@ -5,17 +5,20 @@ Character::Character() {
 }
 
 Character::Character(std::string const & name) {
-	name = name;
-	ap = 40;
+	this->name = name;
+	this->ap = 40;
+	this->aw = NULL;
 }
 
-Character::Character(std::string const & name, int ap = 40, Aweapon* aw = NULL) : name(name), ap(ap), aw(aw) {}
+Character::Character(std::string const & name, int ap = 40, AWeapon* aw = NULL) : name(name), ap(ap), aw(aw) {}
 
 Character::Character(Character const & ch) {
 	*this = ch;
 }
 
-Character::~Character() {}
+Character::~Character() {
+	delete aw;
+}
 
 Character & Character::operator = (Character const & ch) {
 	if (this != &ch) {
@@ -26,11 +29,14 @@ Character & Character::operator = (Character const & ch) {
 }
 
 void Character::recoverAP() {
-	ap += 10;
+	if (ap + 10 > 40)
+		ap = 40;
+	else
+		ap += 10;
 }
 
 void Character::equip(AWeapon* aw) {
-	// return aw;
+	this->aw = aw;
 }
 
 void Character::attack(Enemy* e) {
@@ -39,8 +45,14 @@ void Character::attack(Enemy* e) {
 		std::cout << "Not enough action points" << std::endl;
 		return ;
 	}
-	aw.attack();
-	std::cout << name << " attacks " << e.getName() << " with a " << aw.getName() << std::endl;
+	if (!aw)
+		return ;
+	ap -= aw->getAPCost();
+	std::cout << name << " attacks " << e->getType() << " with a " << aw->getName() << std::endl;
+	aw->attack();
+	e->takeDamage(aw->getDamage());
+	if (e->getHP() <= 0)
+		delete e;
 }
 
 std::string Character::getName() const {
@@ -51,10 +63,14 @@ int Character::getAp() const {
 	return ap;
 }
 
-AWeapon* Character::getAw() const {
+AWeapon* Character::getAweapon() const {
 	return aw;
 }
 
 std::ostream & operator <<(std::ostream &os, Character const &ch) {
-	std::cout << name << " has " << ap << " AP and wields a " << aw.getName() << std::endl;
+	if (!ch.getAweapon())
+		os << ch.getName() << " has " << ch.getAp() << " AP and is unarmed" << std::endl;
+	else
+		os << ch.getName() << " has " << ch.getAp() << " AP and wields a " << ch.getAweapon()->getName() << std::endl;
+	return os;
 }

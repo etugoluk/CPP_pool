@@ -3,10 +3,16 @@
 
 #include "ISquad.hpp"
 
+typedef struct 			s_marines {
+	ISpaceMarine		*value;
+	struct s_marines	*next;
+}						t_marines;
+
 class Squad : public ISquad
 {
-	Squad*	arr;
-	int 	count;
+	// ISpaceMarine	*arr;
+	t_marines		*arr;
+	int 			count;
 public:
 	Squad();
 	Squad(int count);
@@ -15,9 +21,9 @@ public:
 
 	Squad & operator = (Squad const &s);
 
-	int getCount() const;
-	ISpaceMarine* getUnit(int N) const;
-	int push(ISpaceMarine*);
+	virtual int getCount() const;
+	virtual ISpaceMarine* getUnit(int N) const;
+	virtual int push(ISpaceMarine*);
 };
 
 #endif

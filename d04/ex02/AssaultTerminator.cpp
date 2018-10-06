@@ -13,17 +13,28 @@ AssaultTerminator::~AssaultTerminator() {
 }
 
 AssaultTerminator & AssaultTerminator::operator = (AssaultTerminator const &tm) {
+	if (this != &tm)
+		add = tm.getAdd();
 	return *this;
 }
 
-void	AssaultTerminator::battleCry() {
+int		AssaultTerminator::getAdd() const {
+	return add;
+}
+
+ISpaceMarine* AssaultTerminator::clone( void ) const
+{
+	return new AssaultTerminator(*this);
+}
+
+void	AssaultTerminator::battleCry() const{
 	std::cout << "This code is unclean. PURIFY IT !" << std::endl;
 }
 
-void	AssaultTerminator::rangedAttack() {
+void	AssaultTerminator::rangedAttack() const{
 	std::cout << "* does nothing *" << std::endl;
 }
 
-void	AssaultTerminator::meleeAttack() {
+void	AssaultTerminator::meleeAttack() const{
 	std::cout << "* attacks with chainfists *" << std::endl;
 }

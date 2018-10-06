@@ -8,7 +8,7 @@ public:
 	SuperMutant();
 	SuperMutant(int hp, std::string const & type);
 	SuperMutant(SuperMutant const & sm);
-	~SuperMutant();
+	virtual ~SuperMutant();
 
 	SuperMutant & operator = (SuperMutant const & sm);
 

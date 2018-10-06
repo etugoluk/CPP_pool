@@ -3,13 +3,13 @@
 
 PowerFist::PowerFist() {
 	name = "Power Fist";
-	apcost = 8;
+	apCost = 8;
 	damage = 50;
 }
 
-PowerFist::PowerFist(std::string const & name = "Power Fist", int apcost = 8, int damage = 50) : AWeapon(name, apcost, damage) {}
+PowerFist::PowerFist(std::string const & name, int apCost = 8, int damage = 50) : AWeapon(name, apCost, damage) {}
 
-PowerFist::PowerFist(PowerFirst const & pf) {
+PowerFist::PowerFist(PowerFist const & pf) {
 	*this = pf;
 }
 
@@ -19,12 +19,12 @@ PowerFist & PowerFist::operator = (PowerFist const & pf) {
 	if (this != &pf)
 	{
 		this->name = pf.getName();
-		this->apcost = pf.getAPCost();
+		this->apCost = pf.getAPCost();
 		this->damage = pf.getDamage();
 	}
 	return *this;
 }
 
-void PowerFist::attack() {
+void PowerFist::attack() const {
 	std::cout << "* pschhh... SBAM! *" << std::endl;
 }

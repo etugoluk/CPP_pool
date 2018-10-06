@@ -1,12 +1,12 @@
 #include "SuperMutant.hpp"
 
-SuperMutant::SuperMutant() {
+SuperMutant::SuperMutant() : Enemy() {
 	hp = 170;
 	type = "Super Mutant";
 	std::cout << "Gaaah. Me want smash heads !" << std::endl;
 }
 
-SuperMutant::SuperMutant(int hp = 170, std::string const & type = "Super Mutant") : hp(hp), type(type) {
+SuperMutant::SuperMutant(int hp, std::string const & type = "Super Mutant") : Enemy(hp, type) {
 	std::cout << "Gaaah. Me want smash heads !" << std::endl;
 }
 
