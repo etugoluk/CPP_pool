@@ -12,38 +12,22 @@
 
 #include <iostream>
 
-// template <typename T>
-// void add(T &value) {
-// 	++value;
-// }
-
-// template <typename T>
-// void sub(T &value) {
-// 	--value;
-// }
-
-template <typename ptr, typename l, typename f>
-void iter(ptr *arr, l length, f function) {
+template <typename T, typename l>
+void iter(T *arr, l length, void function(T &value)) {
 	for (int i = 0; i < length; ++i)
 	{
 		function(arr[i]);
 	}
 }
 
-void subint(int &value) {
-	--value;
-}
-
-void addint(int &value) {
+template <typename T>
+void add(T &value) {
 	++value;
 }
 
-void subchar(char &value) {
+template <typename T>
+void sub(T &value) {
 	--value;
-}
-
-void addchar(char &value) {
-	++value;
 }
 
 int main() {
@@ -54,13 +38,13 @@ int main() {
 	{
 		std::cout << arr[i] << std::endl;
 	}
-	iter(arr, 5, addint);
+	iter(arr, 5, add);
 	std::cout << "ADD FUNCTION" << std::endl; 
 	for (int i = 0; i < 5; ++i)
 	{
 		std::cout << arr[i] << std::endl;
 	}
-	iter(arr, 5, subint);
+	iter(arr, 5, sub);
 	std::cout << "SUB FUNCTION" << std::endl; 
 	for (int i = 0; i < 5; ++i)
 	{
@@ -73,13 +57,13 @@ int main() {
 	{
 		std::cout << chars[i] << std::endl;
 	}
-	iter(chars, 5, addchar);
+	iter(chars, 5, add);
 	std::cout << "ADD FUNCTION" << std::endl; 
 	for (int i = 0; i < 5; ++i)
 	{
 		std::cout << chars[i] << std::endl;
 	}
-	iter(chars, 5, subchar);
+	iter(chars, 5, sub);
 	std::cout << "SUB FUNCTION" << std::endl; 
 	for (int i = 0; i < 5; ++i)
 	{

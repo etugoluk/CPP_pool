@@ -12,7 +12,7 @@
 
 NAME = ex02
 
-SRCS = 
+SRCS = main.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 
