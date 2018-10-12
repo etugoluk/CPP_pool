@@ -12,105 +12,80 @@
 
 #include "span.hpp"
 
-Span::Span() : arr(NULL), counter(0), n(0) {}
+Span::Span() : n(0) {
+	v.reserve(0);
+}
 
-Span::Span(unsigned int n) : arr(new int[n]), counter(0), n(n) {}
+Span::Span(unsigned int n) : n(n) {
+	v.reserve(n);
+}
 
 Span::Span(Span const &s) {
 	*this = s;
 }
 
-Span::~Span() {
-	delete [] arr;
-}
+Span::~Span() {}
 
 Span & Span::operator=(Span const &s) {
 	if (this != &s)
 	{
 		n = s.getSize();
-		counter = s.getCounter();
-		arr = new int[n];
-		for (unsigned int i = 0; i < n; ++i)
-		{
-			arr[i] = s[i];
-		}
+		v.reserve(n);
+		v = s.v;
 	}
 	return *this;
 }
 
 int Span::operator[](unsigned int i) const {
-	if (i > counter)
+	if (i > v.size())
 		throw std::exception();
-	return arr[i];
+	return v[i];
 }
 
 int & Span::operator[](unsigned int i) {
-	if (i > counter)
+	if (i > v.size())
 		throw std::exception();
-	return arr[i];
+	return v[i];
 }
 
 int Span::getSize() const {
 	return n;
 }
 
-int Span::getCounter() const {
-	return counter;
+std::vector<int> Span::getVector() const {
+	return v;
 }
 
 void Span::addNumber(int value) {
-	if (counter >= n)
+	if (n == v.size())
 		throw Span::NumberExistsException();
-	arr[counter] = value;
-	counter++;
+	v.push_back(value);
 }
 
-unsigned int abs(int a, int b)
+int Span::abs(int a)
 {
-	return (a > b ? a - b : b - a);
-}
-
-int min(int *arr, int size)
-{
-	int min = arr[0];
-	for (int i = 0; i < size; ++i)
-	{
-		if (arr[i] < min)
-			min = arr[i];
-	}
-	return (min);
-}
-
-int max(int *arr, int size)
-{
-	int max = arr[0];
-	for (int i = 0; i < size; ++i)
-	{
-		if (arr[i] > max)
-			max = arr[i];
-	}
-	return (max);
+	return (a > 0 ? a : -a);
 }
 
 int Span::shortestSpan() {
-	if (counter < 2)
+	if (v.size() < 2)
 		throw Span::NoSpanException();
-	int distance = abs(arr[1] - arr[0]);
-	for (unsigned int i = 0; i < counter; ++i)
+	int distance = abs(v[1] - v[0]);
+	for (unsigned int i = 0; i < v.size(); ++i)
 	{
-		for (unsigned int j = i + 1; j < counter; ++j)
+		for (unsigned int j = i + 1; j < v.size(); ++j)
 		{
-			if (abs(arr[i] - arr[j]) < distance)
-				distance = abs(arr[i] - arr[j]);
+			if (abs(v[i] - v[j]) < distance)
+				distance = abs(v[i] - v[j]);
 		}
 	}
 	return distance;
 }
 
 int Span::longestSpan() {
-	if (counter < 2)
+	if (v.size() < 2)
 		throw Span::NoSpanException();
-	return (max(arr, n) - min(arr, n));
+	return (*std::max_element(v.begin(), v.end()) - *std::min_element(v.begin(), v.end()));
 }
 
 Span::NumberExistsException::NumberExistsException() {}

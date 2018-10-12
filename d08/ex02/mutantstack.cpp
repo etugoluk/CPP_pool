@@ -11,15 +11,3 @@
 // ************************************************************************** //
 
 #include "mutantstack.hpp"
-
-MutantStack::MutantStack() {}
-
-MutantStack::MutantStack(MutantStack const & m) {
-	*this = m;
-}
-
-MutantStack::~MutantStack() {}
-
-MutantStack & MutantStack::operator=(MutantStack const & m) {
-	return *this;
-}

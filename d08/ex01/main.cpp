@@ -21,8 +21,44 @@ int main() {
 	sp.addNumber(9);
 	sp.addNumber(11);
 
+	try {
+		sp.addNumber(15);
+	}
+	catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
+
+	Span cpy = sp;
+
+	std::cout << cpy.shortestSpan() << std::endl;
+	std::cout << cpy.longestSpan() << std::endl;
+
+	try {
+		Span small = Span();
+		std::cout << small.shortestSpan() << std::endl;
+		std::cout << small.longestSpan() << std::endl;
+	}
+	catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+
+	Span big = Span(10000);
+
+	try {
+		for (int i = 0; i < 10000; ++i)
+		{
+			big.addNumber(i);
+		}
+	}
+	catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << big.shortestSpan() << std::endl;
+	std::cout << big.longestSpan() << std::endl;
 
 	return (0);
 }

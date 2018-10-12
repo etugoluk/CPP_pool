@@ -14,10 +14,10 @@
 #define SPAN_HPP
 
 #include <iostream>
+#include <vector>
 
 class Span {
-	int 		 *arr;
-	unsigned int counter;
+	std::vector<int> v;
 	unsigned int n;
 public:
 	Span();
@@ -30,11 +30,12 @@ public:
 	int operator[](unsigned int i) const;
 	int & operator[](unsigned int i);
 
-	int getCounter() const;
 	int getSize() const;
+	std::vector<int> getVector() const;
 	void addNumber(int value);
 	int shortestSpan();
 	int longestSpan();
+	int abs(int a);
 
 	class NumberExistsException: public std::exception {
 	public:

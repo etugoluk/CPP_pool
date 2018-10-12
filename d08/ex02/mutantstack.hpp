@@ -18,24 +18,19 @@
 
 template <typename T>
 class MutantStack : public std::stack<T> {
-	typedef    std::stack<T> data;
 public:
-	MutantStack();
-	MutantStack(MutantStack const & m);
-	~MutantStack();
+	MutantStack<T>() {}
+    MutantStack<T>(MutantStack<T> const& m): std::stack<T>(m) {}
+    ~MutantStack<T>() {}
 
-	MutantStack & operator=(MutantStack const & m);
+    typedef typename std::stack<T>::container_type::iterator iterator;
+    using std::stack<T>::operator=;
 
-	typedef typename std::stack<T>::container_type::iterator iterator;
-
-	using std::stack<T>::operator=;
-
-    iterator	begin()
+    iterator    begin()
     {
         return std::stack<T>::c.begin();
     }
-    
-    iterator	end()
+    iterator    end()
     {
         return std::stack<T>::c.end();
     }
