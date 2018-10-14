@@ -10,7 +10,11 @@ class ZazModule : public IMonitorModule
 	ZazModule & operator=(ZazModule const &z);
 
 	std::vector<std::string>	data;
+
 	std::string					name;
+	int							zaz_itr;
+	std::vector<std::string>	zaz;
+
 	bool						is_buffer;
 	std::list<int>				buff;
 	

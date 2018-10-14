@@ -35,32 +35,23 @@ void HostnameModule::parseData()
 	std::string 	tmp;
 
 
-	system("who | grep 'console' | cut -d ' ' -f 1 > temp");
-	std::ifstream		iuser("temp");
-	std::getline(iuser, tmp);
+	system("bash hostname.sh");
+	std::ifstream		ihost("temp");
+
+	std::getline(ihost, tmp);
 	tmp = "Username: " + tmp;
 	if (data.empty())
-	{
 		data.push_back(tmp);
-	}
 	else
-	{
 		data[0] = tmp;
-	}
-	iuser.close();
 
-	system("hostname > temp");
-	std::ifstream		ihost("temp");
 	std::getline(ihost, tmp);
 	tmp = "Hostname: " + tmp;
 	if (data.size() == 1)
-	{
 		data.push_back(tmp);
-	}
 	else
-	{
 		data[1] = tmp;
-	}
+
 	ihost.close();
 }
 

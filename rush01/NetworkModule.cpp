@@ -16,33 +16,24 @@ void NetworkModule::parseData()
 {
 	std::string 	tmp;
 
-	system("ipconfig getifaddr en0 > temp");
-	std::ifstream		iip("temp");
-	std::getline(iip, tmp);
+	system("bash network.sh");
+	std::ifstream		inetwork("temp");
+
+	std::getline(inetwork, tmp);
 	tmp = "IP address: " + tmp;
 	if (data.empty())
-	{
 		data.push_back(tmp);
-	}
 	else
-	{
 		data[0] = tmp;
-	}
-	iip.close();
 
-	system("top -l1 -n1 | grep 'Networks' | cut -d ':' -f3 | cut -d '.' -f1 > temp");
-	std::ifstream		icpu_us("temp");
-	std::getline(icpu_us, tmp);
+	std::getline(inetwork, tmp);
 	tmp = "Network traffic:" + tmp;
 	if (data.size() == 1)
-	{
 		data.push_back(tmp);
-	}
 	else
-	{
 		data[1] = tmp;
-	}
-	icpu_us.close();
+
+	inetwork.close();
 }
 
 std::string const &	NetworkModule::getName() const
