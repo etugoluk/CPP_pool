@@ -1,7 +1,7 @@
 #include "StorageModule.hpp"
 
 
-StorageModule::StorageModule()
+StorageModule::StorageModule() : name("User's storage info"), is_buffer(false)
 {}
 
 StorageModule::~StorageModule()
@@ -43,4 +43,14 @@ void StorageModule::parseData()
 		data[1] = tmp;
 	}
 	icpu_us.close();
+}
+
+std::string const &	StorageModule::getName() const
+{
+	return name;
+}
+
+bool 	 			StorageModule::isBuff() const
+{
+	return is_buffer;
 }

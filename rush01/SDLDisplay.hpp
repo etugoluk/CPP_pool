@@ -14,30 +14,31 @@
 
 class SDLDisplay : public IMonitorDisplay
 {
-	int const	count;
-
 	std::vector<SDL_Window *> windows;
 	std::vector<SDL_Surface *> surfaces;
-	// std::vector<SDL_Renderer *> renderers;
+	std::vector<SDL_Surface *> images;
 
 	TTF_Font 	*font;
-	SDL_Surface *surface;
+
 	SDL_Texture *texture;
 	SDL_Event	e;
 	SDL_Color 	color;
+	SDL_Surface *surface;
 
 	SDLDisplay();
 	SDLDisplay(SDLDisplay const &sdl);
 	SDLDisplay & operator=(SDLDisplay const &sdl);
 
-	std::vector<IMonitorModule *> &	mod;	
+	std::vector<IMonitorModule *> &	mod;
 	
 public:
+
 	SDLDisplay(std::vector<IMonitorModule *> & 	modules);
 	~SDLDisplay();
 
 	void show();
-	void printData(char const *data, SDL_Window *w, SDL_Surface *s);
+	void printData(char const *data, SDL_Surface *s, SDL_Surface *img, int k);
+	void printCat(SDL_Surface *s, SDL_Surface *img);
 
 	class InitException :public std::exception {
 	public:

@@ -1,25 +1,24 @@
 NAME = ft_gkrellm
-
-SRCS = main.cpp \
-		CPUModule.cpp \
-		DateTimeModule.cpp \
-		HostnameModule.cpp \
-		NetworkModule.cpp \
-		OSModule.cpp \
-		RAMModule.cpp \
-		ShellDisplay.cpp \
-		SDLDisplay.cpp \
-		StorageModule.cpp
-
-# INC = -I ./inc/ -I ./SDL/SDL2.framework/Headers\
-# -I ./SDL/SDL2_image.framework/Headers\
-# -I ./SDL/SDL2_ttf.framework/Headers
-
+CC = clang++
+FLAGS = -Wall -Wextra -Werror
 OBJ = $(SRCS:.cpp=.o)
 
-CFLAGS = 
+SRCS = main.cpp \
+		$(CLASS_HEAD:.hpp=.cpp)
 
-# FRM = -F ./SDL/ -framework SDL2 -framework SDL2_image -framework SDL2_ttf -framework OpenCL
+CLASS_HEAD =	CPUModule.hpp \
+				DateTimeModule.hpp \
+				HostnameModule.hpp \
+				NetworkModule.hpp \
+				OSModule.hpp \
+				RAMModule.hpp \
+				ShellDisplay.hpp \
+				SDLDisplay.hpp \
+				StorageModule.hpp \
+				ZazModule.hpp
+
+HEAD =	IMonitorDisplay.hpp \
+		IMonitorModule.hpp
 
 INCLUDES =	-I./frameworks/SDL2.framework/Versions/A/Headers \
 				-I./frameworks/SDL2_ttf.framework/Versions/A/Headers \
@@ -32,22 +31,21 @@ FRAMEWORKS =	-F./frameworks \
 				-framework OpenGL -framework AppKit -framework OpenCl \
 				-framework SDL2 -framework SDL2_ttf -framework SDL2_image \
 				-framework SDL2_mixer
-
+NCURSES = -lncurses
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	clang++ $(CFLAGS) $(OBJ) -o $(NAME) -lncurses $(FRAMEWORKS)
-	# clang++ $(CFLAGS) $(OBJ) -o $(NAME) $(INC) $(FRM)
+	$(CC) $(FLAGS) $(OBJ) -o $(NAME) $(NCURSES) $(FRAMEWORKS)
 
-%.o: %.cpp
-	clang++ $(CFLAGS) $(INCLUDES) -c $< -o $@
+%.o: %.cpp $(CLASS_HEAD) $(HEAD)
+	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	/bin/rm -f $(OBJ)
+	rm -f $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 

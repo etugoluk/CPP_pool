@@ -1,7 +1,7 @@
 #include "RAMModule.hpp"
 
 
-RAMModule::RAMModule()
+RAMModule::RAMModule() : name("Memory info"), is_buffer(false)
 {}
 
 RAMModule::~RAMModule()
@@ -57,4 +57,14 @@ void RAMModule::parseData()
 		data[2] = tmp;
 	}
 	ispeed.close();
+}
+
+std::string const &	RAMModule::getName() const
+{
+	return name;
+}
+
+bool 	 			RAMModule::isBuff() const
+{
+	return is_buffer;
 }

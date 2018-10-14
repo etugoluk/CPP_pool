@@ -1,7 +1,7 @@
 #include "OSModule.hpp"
 
 
-OSModule::OSModule()
+OSModule::OSModule() : name("OS info"), is_buffer(false)
 {}
 
 OSModule::~OSModule()
@@ -57,4 +57,14 @@ void OSModule::parseData()
 		data[2] = tmp;
 	}
 	ibuild.close();
+}
+
+std::string const &	OSModule::getName() const
+{
+	return name;
+}
+
+bool 	 			OSModule::isBuff() const
+{
+	return is_buffer;
 }

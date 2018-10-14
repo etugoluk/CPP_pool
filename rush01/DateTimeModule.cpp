@@ -1,6 +1,6 @@
 #include "DateTimeModule.hpp"
 
-DateTimeModule::DateTimeModule()
+DateTimeModule::DateTimeModule() : name("Date & time info"), is_buffer(false)
 {}
 
 DateTimeModule::~DateTimeModule()
@@ -56,4 +56,14 @@ void DateTimeModule::parseData()
 		data[2] = tmp;
 	}
 	iuptime.close();
+}
+
+std::string const &	DateTimeModule::getName() const
+{
+	return name;
+}
+
+bool 	 			DateTimeModule::isBuff() const
+{
+	return is_buffer;
 }

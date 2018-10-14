@@ -17,6 +17,8 @@ class ShellDisplay : public IMonitorDisplay
 
 	std::vector<IMonitorModule *> &	mod;
 
+	void 	makeDiagramm(std::list<int>::const_iterator const &, std::list<int>::const_iterator const &, int &, std::string);
+
 public:
 	ShellDisplay(std::vector<IMonitorModule *> & 	modules);
 	virtual ~ShellDisplay();

@@ -9,6 +9,7 @@
 #include "RAMModule.hpp"
 #include "NetworkModule.hpp"
 #include "StorageModule.hpp"
+#include "ZazModule.hpp"
 
 #include <iostream>
 #include <string>
@@ -36,6 +37,7 @@ int main(int argc, char **argv) {
 	modules.push_back(new RAMModule);
 	modules.push_back(new NetworkModule);
 	modules.push_back(new StorageModule);
+	modules.push_back(new ZazModule);
 	
 	if (!strcmp(argv[1],"graphic")) {
 		SDLDisplay sdl(modules);

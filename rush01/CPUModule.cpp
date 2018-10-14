@@ -1,8 +1,11 @@
 #include "CPUModule.hpp"
 
 
-CPUModule::CPUModule()
-{}
+CPUModule::CPUModule() : name("CPU info"), is_buffer(true)
+{
+	for (int i = 0; i < MAX_MODULE_BUFFER_SIZE; ++i)
+		buff.push_front(100);
+}
 
 CPUModule::~CPUModule()
 {}
@@ -16,30 +19,40 @@ void CPUModule::parseData()
 {
 	std::string 	tmp;
 
-	system("sysctl machdep.cpu.brand_string > temp");
-	std::ifstream		icpu_br("temp");
-	std::getline(icpu_br, tmp);
+	system("bash cpu.sh");
+	std::ifstream		icpu("temp");
+
+	std::getline(icpu, tmp);
 	tmp.replace(0, std::string("machdep.cpu.brand_string").size(), std::string("CPU model"));
 	if (data.empty())
-	{
 		data.push_back(tmp);
-	}
 	else
-	{
 		data[0] = tmp;
-	}
-	icpu_br.close();
 
-	system("top -l1 -n1 | grep 'CPU usage:' > temp");
-	std::ifstream		icpu_us("temp");
-	std::getline(icpu_us, tmp);
+	std::getline(icpu, tmp);
 	if (data.size() == 1)
-	{
 		data.push_back(tmp);
-	}
 	else
-	{
 		data[1] = tmp;
-	}
-	icpu_us.close();
+
+	std::getline(icpu, tmp);
+	buff.push_back(atoi(tmp.c_str()));
+	buff.pop_front();
+
+	icpu.close();
+}
+
+std::string const &	CPUModule::getName() const
+{
+	return name;
+}
+
+bool 	 			CPUModule::isBuff() const
+{
+	return is_buffer;
+}
+
+std::list<int> const &	CPUModule::getBuff() const
+{
+	return buff;
 }

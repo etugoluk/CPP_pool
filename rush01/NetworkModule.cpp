@@ -1,7 +1,7 @@
 #include "NetworkModule.hpp"
 
 
-NetworkModule::NetworkModule()
+NetworkModule::NetworkModule() : name("Network info"), is_buffer(false)
 {}
 
 NetworkModule::~NetworkModule()
@@ -43,5 +43,15 @@ void NetworkModule::parseData()
 		data[1] = tmp;
 	}
 	icpu_us.close();
+}
+
+std::string const &	NetworkModule::getName() const
+{
+	return name;
+}
+
+bool 	 			NetworkModule::isBuff() const
+{
+	return is_buffer;
 }
 

@@ -1,9 +1,36 @@
 #include "ZazModule.hpp"
 
-ZazModule::ZazModule() : aminal("               |))    |))\n .             |  )) /   ))\n \\   ^ ^      |    /      ))\n  \\(((  )))   |   /        ))\n   / G    )))  |  /        ))\n  |o  _)   ))) | /       )))\n   --' |     ))`/      )))\n    ___|              )))\n   / __\\             ))))`()))\n  /\\@   /             `(())))\n  \\/   /  /`_______/\\   \\  ))))\n       | |          \\ \\  |  )))\n       | |           | | |   )))\n       |_@           |_|_@    ))\n      /_/           /_/_/") {}
+ZazModule::ZazModule() : name("Zaz info"), is_buffer(false)
+{
+	data.push_back("            _,'|             _.-''``-...___..--';)\n           /_ \'.      __..-' ,      ,--...--'''\n          <\\    .`--'''       `     /'\n           `-';'               ;   ; ;\n     __...--''     ___...--_..'  .;.'\n    (,__....----'''       (,..--''   ");
+	data.push_back("    (-`-''-/\").___..--''\"'-._\n     `6_ 6  )   `-.  (     ).`-.__.`)\n     (_Y_.)\'  ._   )  `._ `. ``-..-\'   _..`--\'_..-_/  /--\'_.\' ,\'  (il),-''  (li),\'  ((!.-'    ");
+	data.push_back("     (\"`-/\")_.-'\"``-._\n      . . `; -._    )-;-,_`)\n     (v_,)'  _  )`-.\\  ``-'\n    _.- _..-_/ / ((.'\n  ((,.-'   ((,/    ");
+	data.push_back("   |\\      _,,,---,,_\n   /,`.-'`'    -.  ;-;;,_\n  |,4-  ) )-,_..;\\ (  `'-'\n '---''(_/--'  `-'\\_) ");
+}
 
-ZazModule::~ZazModule() {}
+ZazModule::~ZazModule()
+{}
 
-std::string ZazModule::getData() const {
-	return animal;
+std::vector<std::string> const & ZazModule::getData() const
+{
+	return data;
+}
+
+void ZazModule::parseData()
+{
+}
+
+std::string const &	ZazModule::getName() const
+{
+	return name;
+}
+
+bool 	 			ZazModule::isBuff() const
+{
+	return is_buffer;
+}
+
+std::list<int> const &	ZazModule::getBuff() const
+{
+	return buff;
 }

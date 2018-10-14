@@ -4,7 +4,7 @@
 
 // HostnameModule::HostnameModule(std::string host, std::string user) : hostname (host), username(user) {}
 
-HostnameModule::HostnameModule()
+HostnameModule::HostnameModule() : name("Host info"), is_buffer(false)
 {}
 HostnameModule::~HostnameModule()
 {}
@@ -62,4 +62,14 @@ void HostnameModule::parseData()
 		data[1] = tmp;
 	}
 	ihost.close();
+}
+
+std::string const &	HostnameModule::getName() const
+{
+	return name;
+}
+
+bool 	 			HostnameModule::isBuff() const
+{
+	return is_buffer;
 }
