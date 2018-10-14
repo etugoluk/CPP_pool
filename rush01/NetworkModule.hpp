@@ -5,10 +5,18 @@
 
 class NetworkModule : public IMonitorModule
 {
+
+	NetworkModule(NetworkModule const &cpu);
+	NetworkModule & operator=(NetworkModule const &cpu);
+
+	std::vector<std::string>	data;
+
 public:
 	NetworkModule();
-	~NetworkModule();
-	
+	virtual ~NetworkModule();
+
+	virtual std::vector<std::string> const & getData() const;
+	virtual void parseData();
 };
 
 #endif

@@ -3,8 +3,11 @@
 
 #include "IMonitorDisplay.hpp"
 #include "IMonitorModule.hpp"
+
 #include <ncurses.h>
-#include <unistd.h>
+#include <signal.h>
+#include <iostream>
+// #include <unistd.h>
 
 class ShellDisplay : public IMonitorDisplay
 {
@@ -13,12 +16,12 @@ class ShellDisplay : public IMonitorDisplay
 	ShellDisplay & operator=(ShellDisplay const &s);
 
 	std::vector<IMonitorModule *> &	mod;
+
 public:
-	// ShellDisplay();
 	ShellDisplay(std::vector<IMonitorModule *> & 	modules);
-	~ShellDisplay();
+	virtual ~ShellDisplay();
 	
-	void show();
+	virtual void show();
 };
 
 #endif

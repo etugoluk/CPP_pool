@@ -6,6 +6,7 @@
 class IMonitorDisplay
 {
 public:
+	virtual ~IMonitorDisplay() {};
 	virtual void show() = 0;
 };
 

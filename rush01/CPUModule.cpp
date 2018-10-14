@@ -2,14 +2,10 @@
 
 
 CPUModule::CPUModule()
-{
-
-}
+{}
 
 CPUModule::~CPUModule()
-{
-
-}
+{}
 
 std::vector<std::string> const & CPUModule::getData() const
 {
@@ -20,9 +16,10 @@ void CPUModule::parseData()
 {
 	std::string 	tmp;
 
-	system("sysctl machdep.cpu.brand_string > cpu_brand");
-	std::ifstream		icpu_br("cpu_brand");
+	system("sysctl machdep.cpu.brand_string > temp");
+	std::ifstream		icpu_br("temp");
 	std::getline(icpu_br, tmp);
+	tmp.replace(0, std::string("machdep.cpu.brand_string").size(), std::string("CPU model"));
 	if (data.empty())
 	{
 		data.push_back(tmp);
@@ -33,8 +30,8 @@ void CPUModule::parseData()
 	}
 	icpu_br.close();
 
-	system("top -l1 -n1 | grep 'CPU usage:' > cpu_usage");
-	std::ifstream		icpu_us("cpu_usage");
+	system("top -l1 -n1 | grep 'CPU usage:' > temp");
+	std::ifstream		icpu_us("temp");
 	std::getline(icpu_us, tmp);
 	if (data.size() == 1)
 	{
@@ -46,5 +43,3 @@ void CPUModule::parseData()
 	}
 	icpu_us.close();
 }
-
-

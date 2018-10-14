@@ -14,24 +14,17 @@
 
 class SDLDisplay : public IMonitorDisplay
 {
-	SDL_Window	*CPUWindow;
-	SDL_Window	*DateWindow;
-	SDL_Window	*HostWindow;
-	SDL_Window	*NetworkWindow;
-	SDL_Window	*OSWindow;
-	SDL_Window	*RAMWindow;
+	int const	count;
 
-	SDL_Renderer *CPURenderer;
-	SDL_Renderer *DateRenderer;
-	SDL_Renderer *HostRenderer;
-	SDL_Renderer *NetworkRenderer;
-	SDL_Renderer *OSRenderer;
-	SDL_Renderer *RAMRenderer;
+	std::vector<SDL_Window *> windows;
+	std::vector<SDL_Surface *> surfaces;
+	// std::vector<SDL_Renderer *> renderers;
 
-	TTF_Font *font;
+	TTF_Font 	*font;
 	SDL_Surface *surface;
 	SDL_Texture *texture;
 	SDL_Event	e;
+	SDL_Color 	color;
 
 	SDLDisplay();
 	SDLDisplay(SDLDisplay const &sdl);
@@ -44,6 +37,7 @@ public:
 	~SDLDisplay();
 
 	void show();
+	void printData(char const *data, SDL_Window *w, SDL_Surface *s);
 
 	class InitException :public std::exception {
 	public:

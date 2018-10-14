@@ -5,21 +5,24 @@
 
 class HostnameModule: public IMonitorModule
 {
-	std::string hostname;
-	std::string username;
+
+	std::vector<std::string>	data;
 
 	HostnameModule(HostnameModule const &h);
 	HostnameModule & operator=(HostnameModule const &h);
 
 public:
 	HostnameModule();
-	HostnameModule(std::string, std::string);
-	~HostnameModule();
+	// HostnameModule(std::string, std::string);
+	virtual ~HostnameModule();
 
-	std::string getHostname() const;
-	std::string getUsername() const;
-	void setHostname(std::string);
-	void setUsername(std::string);
+	// std::string getHostname() const;
+	// std::string getUsername() const;
+	// void setHostname(std::string);
+	// void setUsername(std::string);
+
+	virtual std::vector<std::string> const & getData() const;
+	virtual void parseData();
 };
 
 #endif

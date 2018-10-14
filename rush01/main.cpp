@@ -3,6 +3,12 @@
 
 #include "IMonitorModule.hpp"
 #include "CPUModule.hpp"
+#include "HostnameModule.hpp"
+#include "DateTimeModule.hpp"
+#include "OSModule.hpp"
+#include "RAMModule.hpp"
+#include "NetworkModule.hpp"
+#include "StorageModule.hpp"
 
 #include <iostream>
 #include <string>
@@ -23,7 +29,13 @@ int main(int argc, char **argv) {
 	}
 
 	std::vector<IMonitorModule *>	modules;
+	modules.push_back(new DateTimeModule);
+	modules.push_back(new HostnameModule);
+	modules.push_back(new OSModule);
 	modules.push_back(new CPUModule);
+	modules.push_back(new RAMModule);
+	modules.push_back(new NetworkModule);
+	modules.push_back(new StorageModule);
 	
 	if (!strcmp(argv[1],"graphic")) {
 		SDLDisplay sdl(modules);

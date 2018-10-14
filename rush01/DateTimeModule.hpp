@@ -5,10 +5,17 @@
 
 class DateTimeModule : public IMonitorModule
 {
+	DateTimeModule(DateTimeModule const &cpu);
+	DateTimeModule & operator=(DateTimeModule const &cpu);
+	
+	std::vector<std::string>	data;
 	
 public:
 	DateTimeModule();
-	~DateTimeModule();
+	virtual ~DateTimeModule();
+
+	virtual std::vector<std::string> const & getData() const;
+	virtual void parseData();
 	
 };
 

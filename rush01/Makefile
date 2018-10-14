@@ -9,6 +9,7 @@ SRCS = main.cpp \
 		RAMModule.cpp \
 		ShellDisplay.cpp \
 		SDLDisplay.cpp \
+		StorageModule.cpp
 
 # INC = -I ./inc/ -I ./SDL/SDL2.framework/Headers\
 # -I ./SDL/SDL2_image.framework/Headers\
